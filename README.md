@@ -6,9 +6,11 @@
 
 `index.html`을 브라우저에서 열거나 정적 파일 서버로 제공하면 됩니다. 빌드, 서버 함수, Redis, API 키, 환경변수는 필요하지 않습니다.
 
-## Vercel 배포
+## GitHub Pages 배포
 
-GitHub 저장소를 Vercel에 가져온 뒤 Framework Preset을 **Other**로 선택하고 Build Command와 Output Directory를 비워 둔 채 배포하세요. 이 저장소의 루트 `index.html`이 바로 제공됩니다.
+저장소의 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 설정하세요. 이후 `main` 브랜치에 푸시하거나 Actions 탭에서 `Deploy to GitHub Pages`를 직접 실행하면 배포됩니다.
+
+배포 주소는 `https://3potato79.github.io/mapapi/`입니다. 빌드 단계가 없는 정적 사이트라 별도 패키지 설치, 환경변수 또는 서버 설정은 필요하지 않습니다.
 
 ## 거리와 장소 검색
 
