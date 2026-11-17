@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5f7" />
+    <meta
+      name="description"
+      content="출발지와 도착지를 검색하고 두 장소 사이의 거리를 확인해 보세요."
+    />
+    <title>사이 — 장소 사이의 거리</title>
+    <link rel="preconnect" href="https://nominatim.openstreetmap.org" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="사이 홈">사이<span>.</span></a>
+      <span class="topbar-caption">장소와 장소 사이</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> WHERE ARE YOU GOING?</p>
+        <h1 id="page-title">두 장소 사이,<br />얼마나 멀까요<span>?</span></h1>
+        <p class="intro-copy">
+          궁금한 두 곳을 검색해 보세요.<br class="mobile-break" />
+          사이의 거리를 알려드릴게요.
+        </p>
+      </section>
+
+      <section class="search-panel" aria-label="거리 측정">
+        <form id="distance-form" novalidate>
+          <div class="places">
+            <div class="place-field">
+              <label for="origin">출발지</label>
+              <div class="input-wrap">
+                <span class="place-marker origin-marker" aria-hidden="true"></span>
+                <input
+                  id="origin"
+                  name="origin"
+                  type="search"
+                  placeholder="어디에서 출발하나요?"
+                  autocomplete="off"
+                  aria-autocomplete="list"
+                  aria-controls="origin-suggestions"
+                  aria-expanded="false"
+                />
+                <ul class="suggestions" id="origin-suggestions" role="listbox" hidden></ul>
+              </div>
+            </div>
+
+            <div class="connector" aria-hidden="true"><span></span></div>
+
+            <div class="place-field">
+              <label for="destination">도착지</label>
+              <div class="input-wrap">
+                <span class="place-marker destination-marker" aria-hidden="true"></span>
+                <input
+                  id="destination"
+                  name="destination"
+                  type="search"
+                  placeholder="어디까지 가나요?"
+                  autocomplete="off"
+                  aria-autocomplete="list"
+                  aria-controls="destination-suggestions"
+                  aria-expanded="false"
+                />
+                <ul class="suggestions" id="destination-suggestions" role="listbox" hidden></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-hint">검색 결과에서 장소를 선택해 주세요.</p>
+            <button class="measure-button" type="submit">
+              <span>거리 확인하기</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="result-panel" id="result-panel" aria-live="polite" hidden>
+        <div class="result-heading">
+          <span class="result-kicker">THE DISTANCE BETWEEN</span>
+          <h2>두 곳 사이의 거리</h2>
+        </div>
+        <div class="distance-line">
+          <output id="distance-value">—</output>
+          <span class="distance-unit">km</span>
+        </div>
+        <p class="distance-note">두 장소의 좌표를 기준으로 계산한 직선거리예요.</p>
+        <div class="route-summary">
+          <div class="route-point">
+            <span class="route-dot origin-marker" aria-hidden="true"></span>
+            <span id="origin-name"></span>
+          </div>
+          <span class="route-divider" aria-hidden="true"></span>
+          <div class="route-point">
+            <span class="route-dot destination-marker" aria-hidden="true"></span>
+            <span id="destination-name"></span>
+          </div>
+        </div>
+        <a
+          class="map-link"
+          id="map-link"
+          href="https://www.openstreetmap.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>지도에서 보기</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>사이<span class="footer-dot">.</span></span>
+      <span>
+        장소 데이터 ©
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">
+          OpenStreetMap contributors
+        </a>
+      </span>
+    </footer>
+  </body>
+</html>
